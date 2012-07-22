@@ -1,0 +1,14 @@
+{% extends "archive/document.html" %}
+
+{% block title %}
+Document Detail
+{% endblock %}
+
+{% block content %}
+    <ul>
+            <li>Customer: {{ object.customer }}</li>
+            <li>Date: {{ object.date }}</li>
+            <li>Description:  {{ object.description }}</li>
+            <li>Hash:  {{ object.sha512 }}</li>
+    </ul>
+{% endblock %}

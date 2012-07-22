@@ -1,0 +1,18 @@
+{% extends "archive/document.html" %}
+{% load bootstrap_toolkit %}
+
+{% block title %}
+new document
+{% endblock title %}
+
+{% block subtitle %}
+imports new document in the system
+{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action=".">
+{% csrf_token %}
+{{ form|as_bootstrap }}
+<input type="submit">  
+</form>
+{% endblock %}

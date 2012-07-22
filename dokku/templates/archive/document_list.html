@@ -1,0 +1,13 @@
+{% extends "archive/document.html" %}
+
+{% block title %}
+Documents List
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for object in object_list %}
+  <li> <a href="/document/{{object.pk}}">{{object.pk}}: {{ object.description }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

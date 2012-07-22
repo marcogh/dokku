@@ -1,0 +1,13 @@
+{% extends "archive/customer.html" %}
+
+{% block title %}
+Customers List
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for object in object_list %}
+            <li> <a href="/customer/{{ object.pk }}">{{ object.name }}, {{object.vat_number}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
