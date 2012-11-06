@@ -1,14 +1,15 @@
 {% extends "archive/document.html" %}
+{% load i18n %}
 
 {% block title %}
-Document Detail
+{% trans "Document Detail" %}
 {% endblock %}
 
 {% block content %}
     <ul>
-            <li>Customer: {{ object.customer }}</li>
-            <li>Date: {{ object.date }}</li>
-            <li>Description:  {{ object.description }}</li>
-            <li>Hash:  {{ object.sha512 }}</li>
+            <li>{% trans "Customer:"%} {{ object.customer }}</li>
+            <li>{% trans "Date:" %} {{ object.date }}</li>
+            <li>{% trans "Description:" %}  {{ object.description }}</li>
+            <li>{% trans "Hash:" %}  {{ object.sha512 }}</li>
     </ul>
 {% endblock %}

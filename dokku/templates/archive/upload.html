@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 
-{% block mainbody %}
+
+{% block title %}
+Formset
+{% endblock %}
+{% block subtitle %}
+still trying...
+{% endblock %}
+
+{% block content %}
+
 <table>
 <form enctype="multipart/form-data" action='.' method="POST">
 {% csrf_token %}
@@ -11,3 +20,4 @@
 </form>
 </table>
 {% endblock %}
+

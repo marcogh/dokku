@@ -13,11 +13,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'test.db',                      # Or path to database file if using sqlite3.
+#        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', #, 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dokku',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -115,6 +116,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     '/Users/marcogh/Projects/dokku/dokku/templates/',
 )
+
+#EASY_MAPS_GOOGLE_KEY = 'AIzaSyAuEs0ZpNE33FVTqTz9uYPMI04iTcF9zWs'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

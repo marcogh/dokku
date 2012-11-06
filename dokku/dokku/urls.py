@@ -4,6 +4,7 @@ from archive.models import Document, Customer
 from archive.forms import DocumentForm
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from archive.views import CustomerDetail, CustomerCreate, CustomerUpdate
 from archive.views import DocumentDetail, DocumentCreate, DocumentUpdate
 admin.autodiscover()
@@ -18,6 +19,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('gmapi.urls.media')), # Use for debugging only.
 )
 
 urlpatterns += patterns('',
@@ -35,6 +37,8 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('archive.views',
+    url(r'^formset/$', 'formset_edit'),
+    url(r'^$', 'map'),
 
     #url(r'^archive/new/$', 'newdocument'),
     #url(r'^archive/$', 'list_document'),
