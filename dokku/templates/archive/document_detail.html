@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <ul>
-            <li>{% trans "Customer:"%} {{ object.customer }}</li>
-            <li>{% trans "Date:" %} {{ object.date }}</li>
-            <li>{% trans "Description:" %}  {{ object.description }}</li>
-            <li>{% trans "Hash:" %}  {{ object.sha512 }}</li>
-    </ul>
+<dl>
+    <dt>{% trans "Customer:"%}</dt><dd>{{ object.customer }}</dd>
+    <dt>{% trans "Date:" %}</dt><dd>{{ object.date }}</dd>
+    <dt>{% trans "Description:" %}</dt><dd>{{ object.description }}</dd>
+    <dt>{% trans "Hash:" %}</dt><dd>{{ object.sha512 }}</dd>
+</dl>
 {% endblock %}

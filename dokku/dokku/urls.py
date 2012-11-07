@@ -23,15 +23,38 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'^customer/$', ListView.as_view(model=Customer,)),
-    url(r'^customer/(?P<pk>\d+)/$', CustomerDetail.as_view()),
-    url(r'^customer/new/$', CustomerCreate.as_view()),
-    url(r'^customer/(?P<pk>\d+)/edit/$', CustomerUpdate.as_view()),
-
-    url(r'^document/$', ListView.as_view(model=Document,)),
-    url(r'^document/(?P<pk>\d+)/$', DocumentDetail.as_view()),
-    url(r'^document/new/$', DocumentCreate.as_view()),
-    url(r'^document/(?P<pk>\d+)/edit/$', DocumentUpdate.as_view()),
+    url(
+        r'^customer/$', 
+        login_required(ListView.as_view(model=Customer,)),
+    ),
+    url(
+        r'^customer/(?P<pk>\d+)/$', 
+        login_required(CustomerDetail.as_view()),
+    ),
+    url(
+        r'^customer/new/$',
+        login_required(CustomerCreate.as_view()),
+    ),
+    url(
+        r'^customer/(?P<pk>\d+)/edit/$',
+        login_required(CustomerUpdate.as_view()),
+    ),
+    url(
+        r'^document/$',
+        login_required(ListView.as_view(model=Document,)),
+    ),
+    url(
+        r'^document/(?P<pk>\d+)/$',
+        login_required(DocumentDetail.as_view()),
+    ),
+    url(
+        r'^document/new/$',
+        login_required(DocumentCreate.as_view()),
+    ),
+    url(
+        r'^document/(?P<pk>\d+)/edit/$',
+        login_required(DocumentUpdate.as_view()),
+    ),
     #url(r'^document/(?P<pk>\d+)/delete/$', DeleteView.as_view(model=Document,)),
 
 )

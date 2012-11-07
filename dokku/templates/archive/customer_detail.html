@@ -1,9 +1,9 @@
 {% extends "archive/customer.html" %}
 
-{% block title %}Customer Detail{% endblock %}
+{% block title %}{{testvalue}} Customer Detail{% endblock %}
 {% block content %}
-    <ul>
-        <li>Customer: {{ object.name }}</li>
-        <li>VatNumber:  {{ object.vat_number }}</li>
-    </ul>
+<dl>
+    <dt>Customer</dt><dd>{{ object.name }}</dd>
+    <dt>VatNumber</dt><dd>{{ object.vat_number }}</dd>
+</dl>
 {% endblock %}

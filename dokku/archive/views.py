@@ -14,7 +14,6 @@ from django.forms.models import modelformset_factory
 
 # TODO: eliminare la riga seguente:
 from django.views.generic import FormView
-
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -36,16 +35,20 @@ class CustomerUpdate(UpdateView):
 class CustomerDetail(DetailView):
     model = Customer
 
+    #def get_context_data(self, **kwargs):
+        #mycontext = super(CustomerDetail,self).get_context_data(**kwargs)
+        #mycontext['testvalue'] = 'Tomorrow'
+        ###return mycontext
+
 class DocumentCreate(CreateView):
     model = Document
     form_class = DocumentForm
 
     def get_form_class(self):
-        if hasattr(self.request,'username'):
+        if not hasattr(self.request,'username'):
             return self.form_class
         else:
             return PubDocumentForm
-            
 
     def form_valid(self,form):
         fhash = handle_uploaded_file(self.request.FILES['file'])
