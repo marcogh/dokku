@@ -20,6 +20,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('gmapi.urls.media')), # Use for debugging only.
+    url(
+        r'^accounts/login/$', 
+        'django.contrib.auth.views.login',
+        name='login',
+    ),
 )
 
 urlpatterns += patterns('',
@@ -34,6 +39,7 @@ urlpatterns += patterns('',
     url(
         r'^customer/new/$',
         login_required(CustomerCreate.as_view()),
+        name='customer_new',
     ),
     url(
         r'^customer/(?P<pk>\d+)/edit/$',
@@ -50,6 +56,7 @@ urlpatterns += patterns('',
     url(
         r'^document/new/$',
         login_required(DocumentCreate.as_view()),
+        name = "document_new",
     ),
     url(
         r'^document/(?P<pk>\d+)/edit/$',

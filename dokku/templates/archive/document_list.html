@@ -10,4 +10,5 @@ Documents List
   <li> <a href="/document/{{object.pk}}">{{object.pk}}: {{ object.description }}</a></li>
 {% endfor %}
 </ul>
+<a class="btn btn-primary" href="{% url document_new %}">Add New</a>
 {% endblock %}

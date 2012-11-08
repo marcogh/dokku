@@ -5,9 +5,10 @@ Customers List
 {% endblock %}
 
 {% block content %}
-    <ul>
-        {% for object in object_list %}
-            <li> <a href="/customer/{{ object.pk }}">{{ object.name }}, {{object.vat_number}}</a></li>
-        {% endfor %}
-    </ul>
+<ul>
+    {% for object in object_list %}
+        <li> <a href="/customer/{{ object.pk }}">{{ object.name }}, {{object.vat_number}}</a></li>
+    {% endfor %}
+</ul>
+<a class="btn btn-primary" href="{% url customer_new %}">Add New</a>
 {% endblock %}
