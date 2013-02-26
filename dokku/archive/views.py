@@ -25,6 +25,8 @@ logging.basicConfig(
     level = logging.DEBUG,
     format = '%(asctime)s %(levelname)s %(message)s',
 )
+class CustomerDelete(DeleteView):
+    model = Customer
 
 class CustomerCreate(CreateView):
     model = Customer
@@ -60,6 +62,7 @@ class DocumentCreate(CreateView):
 
 class DocumentUpdate(UpdateView):
     model = Document
+    form_class = DocumentForm
 
     def get_form_class(self):
         if not hasattr(self.request,'username'):
@@ -67,8 +70,14 @@ class DocumentUpdate(UpdateView):
         else:
             return PubDocumentForm
 
-    def form_valid():
-        fhash = handle_uploaded_file(request.FILES['file'])
+    def form_valid(self,form):
+        if self.request.FILES:
+            fhash = handle_uploaded_file(self.request.FILES['file'])
+        self.object = form.save(commit=False)
+        #self.object.sha512 = fhash
+        self.object.save()
+        #return super(DocumentCreate, self).form_valid(form)
+        return HttpResponseRedirect('/document/')
 
 class DocumentDetail(DetailView):
     model = Document
@@ -94,12 +103,17 @@ def handle_uploaded_file(f):
     return fhash.hexdigest()
 
 def formset_edit(request):
-    #CustFormSet = formset_factory(CustomerForm, extra=2, max_num=32, can_order=True )
-    CustFormSet = modelformset_factory(Customer, extra=2, max_num=32 )
-    form = CustFormSet(initial=[
-        {'vat_number': '12345', 'name': 'Laura Maggi'},
-        {'vat_number': '123456', 'name': 'Gloria Guida'},
-    ])
+    CustFormSet = modelformset_factory(Customer, extra=3, max_num=32 )
+    if request.method == 'POST':
+        form = CustFormSet(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CustFormSet()
+    #form = CustFormSet(initial=[
+    #    {'vat_number': '12345', 'name': 'Laura Maggi'},
+    #    {'vat_number': '123456', 'name': 'Gloria Guida'},
+    #])
     return render_to_response(
         'archive/upload.html',
         {'form': form},

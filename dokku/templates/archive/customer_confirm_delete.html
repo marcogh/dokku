@@ -1,0 +1,16 @@
+{% extends "archive/customer.html" %}
+
+{% block title %}
+Customer Delete
+{% endblock %}
+
+{% block content %}
+Delete object {{object}}?
+
+<form method="POST" action=".">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit">  
+</form>
+{% endblock %}
+

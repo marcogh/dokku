@@ -5,7 +5,7 @@ from archive.forms import DocumentForm
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from archive.views import CustomerDetail, CustomerCreate, CustomerUpdate
+from archive.views import CustomerDetail, CustomerCreate, CustomerUpdate, CustomerDelete
 from archive.views import DocumentDetail, DocumentCreate, DocumentUpdate
 admin.autodiscover()
 
@@ -35,6 +35,10 @@ urlpatterns += patterns('',
     url(
         r'^customer/(?P<pk>\d+)/$', 
         login_required(CustomerDetail.as_view()),
+    ),
+    url(
+        r'^customer/(?P<pk>\d+)/delete/$', 
+        login_required(CustomerDelete.as_view()),
     ),
     url(
         r'^customer/new/$',

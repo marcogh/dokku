@@ -4,16 +4,20 @@
 {% block title %}
 Formset
 {% endblock %}
+
 {% block subtitle %}
 still trying...
 {% endblock %}
 
 {% block content %}
-
 <table>
 <form enctype="multipart/form-data" action='.' method="POST">
 {% csrf_token %}
-{{form.as_p}}
+{{ form.management_form }}
+{% for subform in form %}
+{{ subform.as_p }}
+<hr>
+{% endfor %}
 <p>
 <input type="submit">
 </p>
