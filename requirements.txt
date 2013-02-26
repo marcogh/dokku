@@ -12,3 +12,4 @@ django-bootstrap-toolkit
 django-jenkins
 selenium
 mock
+pyflakes
